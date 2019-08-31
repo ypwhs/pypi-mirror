@@ -12,13 +12,12 @@ def get_env(key, default=None):
 
 def main() -> None:
     interval = get_env('INTERVAL', 3600)
-    config_path = get_env('CONFIG', '/data/bandersnatch.conf')
-    extra_args = get_env('EXTRA', 'mirror --force-check')
-
+    cmd = get_env('CMD', 'bandersnatch -c bandersnatch.conf mirror --force-check')
+    cmd = cmd.split(' ')
+    print(f'CMD: {cmd}', file=sys.stderr)
     print(f"Running bandersnatch every {interval}s", file=sys.stderr)
     while True:
         start_time = time.time()
-        cmd = ['bandersnatch', '-c', config_path, extra_args.split(' ')]
         run(cmd)
         run_time = time.time() - start_time
         if run_time < interval:
