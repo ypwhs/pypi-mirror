@@ -12,7 +12,7 @@ def get_env(key, default=None):
 
 def main() -> None:
     interval = get_env('INTERVAL', 3600)
-    cmd = get_env('CMD', 'bandersnatch -c bandersnatch.conf mirror --force-check')
+    cmd = get_env('CMD', 'bandersnatch -c bandersnatch.conf mirror')
     cmd = cmd.split(' ')
     print(f'CMD: {cmd}', file=sys.stderr)
     print(f"Running bandersnatch every {interval}s", file=sys.stderr)
