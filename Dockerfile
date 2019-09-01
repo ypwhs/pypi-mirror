@@ -4,6 +4,6 @@ RUN python -m pip --no-cache-dir install --upgrade \
     -i https://mirrors.aliyun.com/pypi/simple/ \
     bandersnatch
 ENV INTERVAL 3600
-ENV CMD "bandersnatch -c bandersnatch.conf mirror --force-check"
+ENV CMD "bandersnatch -c bandersnatch.conf mirror"
 COPY . .
 CMD ["python", "/app/runner.py"]
